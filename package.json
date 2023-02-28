@@ -4,7 +4,8 @@
   "description": "Using our newly gained skills in mongoDB and mongoose by extension, we are to build the backend api for a would be social network, with the ability to make posts, react to friends posts, and add friends to a friend list. ",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "npm run test",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
