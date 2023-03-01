@@ -8,6 +8,7 @@ const userSchema = new Schema(
             unique: true,
             trim: true
         },
+        // regex to validate email address
         email: {
             type: String,
             required: true,
