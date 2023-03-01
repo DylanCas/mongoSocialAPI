@@ -1,6 +1,8 @@
 const Thought = require('../models/Thought');
 
+module.exports = {
 // get all thoughts
+
 // get single thought by id
 
 // create new thought
@@ -13,4 +15,4 @@ const Thought = require('../models/Thought');
 
 // delete reaction from thought
 
-// module.exports = {}
+}
