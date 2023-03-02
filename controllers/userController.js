@@ -1,9 +1,9 @@
-const User = require('../models/User');
+const user = require('../models/User');
 
 module.exports = {
 // get all users
     getUsers(req, res) {
-        User.find()
+        user.find()
         .select('-__v')
         .then(async (user) => {
             res.json(user)
@@ -15,13 +15,32 @@ module.exports = {
     },
 // get single user by id
     getSingleUser(req, res) {
-        User.findOne({ _id: req.params.id })
+        user.findOne({ _id: req.params.id })
         .select('-__v')
-    }
+        .then(async (user) =>
+        !user
+          ? res.status(404).json({ message: 'No student with that ID' })
+          : res.json({user})
+      )
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
+    },
 
 // create new user
+    createUser(req, res) {
+        user.create(req.body)
+        .then((user) => res.json(user))
+        .catch((err) => res.status(400).json(err));
+    },
 
-// delete user
+// update user by id
+
+// delete user by id
+    deleteUser(req, res) {
+
+    }
 
 // add new friend
 // delete friend

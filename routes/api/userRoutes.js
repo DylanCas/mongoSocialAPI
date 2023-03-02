@@ -1,13 +1,15 @@
 const router = require('express').Router();
 // import functions from userController
-const {} = require('../controllers/userController');
+const { getUsers, getSingleUser, createUser } = require('../../controllers/userController');
 
-// get all users
-router.route('/')
+// get all users. /api/users
+router.route('/').get(getUsers)
 
-// get single user by id
+// get single user by id. /api/users/:id
+router.route('/:id').get(getSingleUser)
 
-// create new user
+// create new user. /api/users
+router.route('/').post(createUser)
 
 // update user by id
 
@@ -16,3 +18,5 @@ router.route('/')
 // add new friend
 
 // delete friend
+
+module.exports = router;

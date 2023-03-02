@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // import functions from thoughtController
-const {} = require('../controllers/thoughtController');
+const {} = require('../../controllers/thoughtController');
 
 // get all thoughts
 router.route('/')
@@ -16,3 +16,5 @@ router.route('/')
 // add reaction to thought
 
 // delete reaction from thought
+
+module.exports = router;
