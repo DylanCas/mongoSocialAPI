@@ -1,6 +1,7 @@
 const user = require('../models/User');
 
 module.exports = {
+    
 // get all users
     getUsers(req, res) {
         user.find()
@@ -13,6 +14,7 @@ module.exports = {
             res.status(500).json(err);
         })
     },
+
 // get single user by id
     getSingleUser(req, res) {
         user.findOne({ _id: req.params.id })
@@ -36,11 +38,24 @@ module.exports = {
     },
 
 // update user by id
+    updateUser(req, res) {
+        user.findOneAndUpdate(
+            { _id: req.params.id },
+            { $set: req.body },
+            // runValidators: true ensures that the updated thought meets the requirements set in the Thought model, and new: true ensures that the updated thought is returned
+            { runValidators: true, new: true }
+        )
+    },
 
-// delete user by id
+// delete user by id. TODO: *BONUS* delete associated thoughts
     deleteUser(req, res) {
-
-    }
+        user.findOneAndDelete({ _id: req.params.id })
+        .then((user) => {
+            !user 
+            ? res.status(404).json({ message: 'No user with that ID' })
+            : res.json({ message: 'User deleted' })
+        })
+    },
 
 // add new friend
 // delete friend

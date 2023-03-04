@@ -14,3 +14,5 @@ db.once('open', () => {
     console.log(`App running on port ${PORT}!`);
   });
 });
+
+console.log('Hello World')
