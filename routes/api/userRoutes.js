@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // import functions from userController
-const { getUsers, getSingleUser, createUser, updateUser, deleteUser } = require('../../controllers/userController');
+const { getUsers, getSingleUser, createUser, updateUser, deleteUser, addFriend, deleteFriend } = require('../../controllers/userController');
 
 // get all users. /api/users
 router.route('/').get(getUsers)
@@ -11,14 +11,16 @@ router.route('/:id').get(getSingleUser)
 // create new user. /api/users
 router.route('/').post(createUser)
 
-// update user by id
+// update user by id. /api/users/:id
 router.route('/:id').put(updateUser)
 
-// delete user by id
+// delete user by id. /api/users/:id
 router.route('/:id').delete(deleteUser)
 
-// add new friend
+// add new friend. /api/users/:userId/friends/:friendId
+router.route('/:userId/friends/:friendId').post(addFriend)
 
-// delete friend
+// delete friend. /api/users/:userId/friends/:friendId
+router.route('/:userId/friends/:friendId').delete(deleteFriend)
 
 module.exports = router;

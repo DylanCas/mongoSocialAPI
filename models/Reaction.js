@@ -12,9 +12,10 @@ const reactionSchema = new Schema(
             required: true,
             maxlength: 280
         },
+        // TODO: reference to the associated user?
         username: {
             type: String,
-            required: true
+            required: true,
         },
         createdAt: {
             type: Date,
