@@ -18,6 +18,7 @@ const thoughtSchema = new Schema(
             // or try `get: timestamp => new Date(timestamp).toLocaleDateString()`
             get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
         },
+        // reference to the associated user
         username: {
             type: String,
             required: true
