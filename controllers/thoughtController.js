@@ -32,6 +32,7 @@ module.exports = {
 
 // create new thought
 // have not figured out how to push thought id to user's thoughts array
+// server responds 400, but thought is created
     createThought(req, res) {
         thought.create(req.body)
         .then((thought) => {
@@ -48,7 +49,7 @@ module.exports = {
     },
 
 // update thought by id
-// TODO: issue with updating thought. Times out
+// TODO: issue with updating thought. States wrong route, but get a 200 response. 
     updateThought(req, res) {
         thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
@@ -58,6 +59,10 @@ module.exports = {
         )
         .then((thought) => {
             res.json(thought)
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
         })
     },
 

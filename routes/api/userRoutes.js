@@ -6,16 +6,16 @@ const { getUsers, getSingleUser, createUser, updateUser, deleteUser, addFriend, 
 router.route('/').get(getUsers)
 
 // get single user by id. /api/users/:userId
-router.route('/:id').get(getSingleUser)
+router.route('/:userId').get(getSingleUser)
 
 // create new user. /api/users
 router.route('/').post(createUser)
 
 // update user by id. /api/users/:userId
-router.route('/:id').put(updateUser)
+router.route('/:userId').put(updateUser)
 
 // delete user by id. /api/users/:userId
-router.route('/:id').delete(deleteUser)
+router.route('/:userId').delete(deleteUser)
 
 // add new friend. /api/users/:userId/friends/:friendId
 router.route('/:userId/friends/:friendId').post(addFriend)
